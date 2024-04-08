@@ -1,0 +1,22 @@
+{
+  "name": "connect",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Connect to people",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "startw": "node --watch server.js",
+    "dev": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ashutosh Kumar",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.2",
+    "express": "^4.18.2",
+    "mongoose": "^8.2.2",
+    "nodemon": "^3.1.0"
+  }
+}
