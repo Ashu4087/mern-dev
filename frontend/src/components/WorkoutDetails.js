@@ -1,4 +1,5 @@
 import { useWorkoutsContext } from "../Hooks/useWorkoutsContext";
+import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 
 export const WorkoutDetails = ({workout}) => {
 
@@ -16,12 +17,18 @@ export const WorkoutDetails = ({workout}) => {
         }
 
     }
+
+    const numberWithTwoDigits = (input) => {
+        let str = String(input)
+        return str.padStart(2, '0');
+    };
+    
     return(
         <div className="workout-details">
             <h4>{workout.title}</h4>
-            <p><strong>Load (Kg) :{workout.load}</strong></p>
-            <p><strong>Reps :{workout.reps}</strong></p>
-            <p>Reps :{workout.createdAt}</p>
+            <p><strong>Load (Kg): {numberWithTwoDigits(workout.load)}</strong></p>
+            <p><strong>Reps: {numberWithTwoDigits(workout.reps)}</strong></p>
+            <p>{formatDistanceToNow(new Date(workout.createdAt), {addSuffix: true})}</p>
             <span onClick={handleDelete}>delete</span>
         </div>
     )
