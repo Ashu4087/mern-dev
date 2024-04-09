@@ -23,8 +23,8 @@ export const Home = () =>{
     }, []);
 
     return(
-        <div>
-            <div style={{display: "inline"}}>
+        <div className='home'>
+            <div className='workouts'>
                 {workouts && workouts.map((w)=>(
                     // <p key={w._id}>{w.title}</p>
                     <WorkoutDetails workout={w}/>
