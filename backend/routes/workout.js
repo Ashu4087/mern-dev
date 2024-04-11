@@ -1,5 +1,4 @@
 import express from 'express';
-import Workout from '../models/workoutModel.js';
 import { createWorkout, getWorkouts, getWorkout, deleteWorkout, updateWorkout } from '../controllers/workoutController.js';
 
 const router = express.Router();
@@ -8,7 +7,7 @@ const router = express.Router();
 router.get('/', getWorkouts);
 
 // get a workout
-router.get('/:id',getWorkout);
+router.get('/:id', getWorkout);
 
 // create new  workout
 router.post('/', createWorkout);

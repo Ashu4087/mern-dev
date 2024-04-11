@@ -3,6 +3,7 @@ import 'dotenv/config';
 import mongoose from 'mongoose';
 import workoutRoutes from './routes/workout.js';
 import cors from 'cors';
+import userRoutes from './routes/user.js'
 
 
 const app =  express();
@@ -15,6 +16,9 @@ app.use(logger);
 app.use(cors())
 //router use below url as base for workout 
 app.use('/api/workouts', workoutRoutes);
+
+//router use below url as base for user authentication 
+app.use('/api/user', userRoutes);
 
 
 
