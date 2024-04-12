@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import  WorkoutForm  from '../components/WorkoutForm.js';
 import { WorkoutDetails } from '../components/WorkoutDetails.js';
-
 import { useWorkoutsContext } from '../Hooks/useWorkoutsContext.js';
 
 export const Home = () =>{
@@ -25,8 +24,7 @@ export const Home = () =>{
     return(
         <div className='home'>
             <div className='workouts'>
-                {workouts && workouts.map((w)=>(
-                    // <p key={w._id}>{w.title}</p>
+                {workouts && workouts?.map((w)=>(
                     <WorkoutDetails workout={w}/>
                 ))}
             </div>
