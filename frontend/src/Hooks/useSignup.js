@@ -1,4 +1,4 @@
-import { useAuthContext } from "../Hooks/useAuthContext";
+import { useAuthContext } from "./useAuthContext";
 import { useState } from "react";
 
 export const useSignup = () =>{
@@ -12,7 +12,7 @@ export const useSignup = () =>{
         setError(null);
         const response = await fetch('http://localhost:4024/api/user/signup', {
                 method: 'POST',
-                headers: {'Content-type': 'application/json'},
+                headers: {'Content-type': '/json'},
                 body: JSON.stringify({email, password})
             }
         );

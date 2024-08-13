@@ -3,12 +3,17 @@ import 'dotenv/config';
 import mongoose from 'mongoose';
 import workoutRoutes from './routes/workout.js';
 import cors from 'cors';
-import userRoutes from './routes/user.js'
+import userRoutes from './routes/user.js';
+import staticFile from './routes/static.js'
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+export const __dirname = path.dirname(__filename);
 
 
 const app =  express();
 const port = process.env.PORT | 4000;
-
 
 //middleware
 app.use(express.json());
@@ -20,7 +25,7 @@ app.use('/api/workouts', workoutRoutes);
 //router use below url as base for user authentication 
 app.use('/api/user', userRoutes);
 
-
+app.use('/static', staticFile);
 
 // use custom middle ware
 
