@@ -4,12 +4,12 @@ import { useSignup } from "../Hooks/useSignup";
 export const Signup = () =>{
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const {isLoading, error, sugnUp} = useSignup();
+    const {isLoading, error, signUp} = useSignup();
 
     const handleSubmit = async(e) =>{
         e.preventDefault();
 
-        await sugnUp(email, password);
+        await signUp(email, password);
 
 
         console.log(email, password);

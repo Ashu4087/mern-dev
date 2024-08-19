@@ -1,12 +1,14 @@
 import { useState } from "react";
+import { useLogin } from "../Hooks/useLogin";
 
 export const Login = () =>{
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const {isLoading, error, login } = useLogin();
 
-    const handleSubmit = (e) =>{
+    const handleSubmit = async(e) =>{
         e.preventDefault();
-
+        await login(email, password)
         console.log(email, password);
     }
     return(
@@ -29,7 +31,8 @@ export const Login = () =>{
                 onChange={(e) => setPassword(e.target.value)}
                 value={password}
             />
-            <button>Login</button>
+            <button disabled={isLoading}>Login</button>
+            {error && <div className="error">{error}</div>}
 
         </form>
     );
