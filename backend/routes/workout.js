@@ -1,7 +1,12 @@
 import express from 'express';
 import { createWorkout, getWorkouts, getWorkout, deleteWorkout, updateWorkout } from '../controllers/workoutController.js';
+import { requireAuth } from '../middleware/requireAuth.js';
 
 const router = express.Router();
+
+// middleware to authenticate
+
+router.use(requireAuth);
 
 // get all workouts
 router.get('/', getWorkouts);

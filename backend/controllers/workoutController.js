@@ -7,7 +7,8 @@ export const getWorkouts = async(req,res) =>{
     // add to db
     try {
         // create a document (record) using Model(Workout)
-        const workouts = await Workout.find({}).sort({createdAt: -1});
+        const {user_id} = req.user._id;
+        const workouts = await Workout.find({user_id}).sort({createdAt: -1});
         res.status(200).json({data:workouts});
     } catch (error) {
         res.status(400).json({error: error.message});
@@ -23,7 +24,6 @@ export const getWorkout = async(req,res) =>{
         return res.status(404).json({error: 'Not a valid id'});
 
     }
-
     const workout = await Workout.findById(id);
 
     if(!workout){
@@ -38,7 +38,6 @@ export const getWorkout = async(req,res) =>{
 // create new  workout
 export const createWorkout = async(req,res) =>{
     const {title, load, reps} = req.body ;
-
     let emptyFields = [];
 
     if(!title){
@@ -58,7 +57,9 @@ export const createWorkout = async(req,res) =>{
     // add to db
     try {
         // create a document (record) using Model(Workout)
-        const workout = await Workout.create({title, load, reps});
+        const {user_id} = req.user._id;
+
+        const workout = await Workout.create({title, load, reps, user_id});
         res.status(200).json(workout);
     } catch (error) {
         res.status(400).json({error: error.message});
